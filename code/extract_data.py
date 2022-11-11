@@ -1,10 +1,5 @@
 # Libs
-import pandas as pd
-import re
 from decouple import config
-import requests
-import json
-import time
 from ExtractDataElections import ExtractDataElections as TSE
 
 # Load Enviroment Vars
