@@ -58,6 +58,7 @@ class ExtractDataElections :
                 try :
                     response = requests.get(f"{self.candidate}{uf}/{uf}-{code}-e000546-r.json")
                     data_tmp = pd.DataFrame(json.loads(response.content)['cand'])
+                    data_tmp['COD_CARGO'] = code
                     data_tmp['UF'] = uf.upper()
                     data_tmp['CARGO'] = self.code_roles.get(code)
                 except :
@@ -67,4 +68,5 @@ class ExtractDataElections :
             print()
             time.sleep(1)
         
+        dataframe['n_partido'] = dataframe['n'].apply(lambda x: x[:2])
         return dataframe
